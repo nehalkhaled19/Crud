@@ -6,16 +6,22 @@ import Category from './components/Category'
 import Layout from './components/Layout'
 import AddProducts from './components/AddProducts'
 import ProductDetails from './components/ProductDetails'
+import LayoutTwo from './components/LayoutTwo'
+import Edit from './components/Edit'
 
 export default function App() {
   let roots = createBrowserRouter([
     {
       path: '/', element: <Layout />, children: [
         { index: true, element: <Home /> },
-        { path: 'products', element: <Products />},
-        {path:'products/add',element:<AddProducts></AddProducts>},
-        { path: 'products/:productId', element: <ProductDetails /> },
-        { path: 'categories', element: <Category /> }
+        { path: 'products', element: <LayoutTwo />,children:[
+          { index: true, element: <Products /> },
+          {path:'add',element:<AddProducts></AddProducts>},
+          { path: ':productId', element: <ProductDetails /> },
+        ]},
+        { path: 'categories', element: <Category /> },
+        { path: 'edit/:productId', element: <Edit/> }
+
       ]
     },
   ])
