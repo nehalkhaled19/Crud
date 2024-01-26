@@ -8,13 +8,14 @@ export default function Edit() {
     const [title, setTitle] = useState()
     const [price, setPrice] = useState()
     const nav = useNavigate()
- 
+
     // get data
     useEffect(() => {
         fetch(`http://localhost:3000/products/${productId}`).then((respons) => respons.json()).then((data) => setPro(data))
 
     }, [])
-
+   
+    
 
     // handle sumbite
     function handleSumbite(e) {
